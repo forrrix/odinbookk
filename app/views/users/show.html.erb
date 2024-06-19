@@ -1,0 +1,17 @@
+<h1>User Profile</h1>
+
+<div class="user-info">
+    <div class="user-avatar">
+        <% if @user.photo.attached? %>
+    <%= image_tag @user.photo.variant(resize_to_limit: [100, 100]), alt: "User's Photo", class: "user-photo" %>
+<% else %>
+    <%# Display Gravatar picture %>
+    <% gravatar_url = "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(@user.email.downcase)}" %>
+    <%= image_tag(gravatar_url, alt: "User Avatar") %>
+<% end %>
+    </div>
+
+    <div class="user-details">
+        <p>Email: <%= @user.email %></p>
+    </div>
+</div>

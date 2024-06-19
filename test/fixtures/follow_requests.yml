@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  follower: one
+  follower_id: 1
+  followee: one
+  followee_id: 1
+  status: MyString
+
+two:
+  follower: two
+  follower_id: 1
+  followee: two
+  followee_id: 1
+  status: MyString

@@ -1,0 +1,37 @@
+<h1><%= @post.title %></h1>
+<% if @post.image.attached? %>
+  <%= image_tag @post.image, class: "post-image" %>
+<% end %>
+<p>
+    <%= @post.body %>
+</p>
+
+<p>
+    <strong>Author:</strong> <%= @post.user.email %>
+</p>
+<% if user_signed_in? && !current_user.likes.exists?(post: @post) %>
+  <%= button_to 'Like', likes_path(post_id: @post.id), method: :post %>
+<% else %>
+  <%= button_to 'Unlike', like_path(current_user.likes.find_by(post: @post).id), method: :delete %>
+<% end %>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+<%= button_to 'Destroy', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= form_with(model: [@post, Comment.new], local: true) do |f| %>
+  <p>
+    <%= f.label :body, "New comment" %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong><%= comment.commenter.email %></strong>
+    <%= comment.body %>
+    <%= button_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
