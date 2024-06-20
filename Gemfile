@@ -71,3 +71,4 @@ gem 'gravtastic'
 gem 'image_processing'
 gem 'ruby-vips'
 gem 'letter_opener', '~> 1.10'
+gem 'aws-sdk-s3', require: false
