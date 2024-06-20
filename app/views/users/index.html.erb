@@ -1,5 +1,7 @@
 <h1>All Users</h1>
 
+<%= render 'layouts/navigation' %>
+
 <% @users.each do |user| %>
     <div class="post" style="border: 1px solid #333; padding: 10px; margin-bottom: 10px;">
         <%= link_to user_path(user) do %> <!--makes the user name and picture a link to his profile-->

@@ -33,3 +33,5 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+db/migrate/20240604175740_create_likes.rb
+db/migrate/20240604175740_create_likes.rb

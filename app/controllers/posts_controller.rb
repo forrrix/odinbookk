@@ -4,10 +4,9 @@ class PostsController < ApplicationController
   def index
     # Fetch the IDs of users the current user is following
     following_ids = current_user.followees.pluck(:id)
-    # Include the current user's id in the list
-    user_ids = following_ids << current_user.id
-    # Fetch posts where the user_id is in the list of the current user's id and their followees' ids
-    @followed_users_posts = Post.where(user_id: user_ids).order(created_at: :desc)
+
+    # Fetch posts from followed users excluding the current user's own posts
+    @followed_users_posts = Post.where(user_id: following_ids).order(created_at: :desc)
 
     # Fetch posts created by the current user
     @created_posts = current_user.posts.order(created_at: :desc)

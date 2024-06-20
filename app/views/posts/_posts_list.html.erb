@@ -9,7 +9,11 @@
     <p style="font-size: 16px;"><%= post.body %></p> 
     <p style="font-size: 14px; color: #666;">
       Author: <%= link_to user_path(post.user) do %>
-                <%= image_tag post.user.photo.variant(resize_to_limit: [50, 50]), class: "author-profile-picture" %>
+                <% if post.user.photo.attached? %>
+                  <%= image_tag post.user.photo.variant(resize_to_limit: [50, 50]), class: "author-profile-picture" %>
+                <% else %>
+                  <%= image_tag post.user.gravatar_url, alt: "User's Gravatar", class: "author-profile-picture" %> <!--otherwise use the gravatar -->
+                <% end %>
               <% end %>
       <p> <a href="/users/<%= post.user.id %>"><%= post.user.email %></a>  </p>
     </p>

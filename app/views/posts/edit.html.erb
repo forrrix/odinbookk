@@ -1,5 +1,5 @@
 <h1>Edit Post</h1>
-
+<%= render 'layouts/navigation' %>
 <%= form_with(model: @post, local: true) do |form| %>
    <div>
     <%= form.label :title %>
@@ -8,6 +8,10 @@
   <div>
     <%= form.label :body %>
     <%= form.text_area :body %>
+  </div>
+    <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
   </div>
   
   <%= form.submit %>

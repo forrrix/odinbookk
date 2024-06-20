@@ -13,3 +13,44 @@
  *= require_tree .
  *= require_self
  */
+/* Flex container for buttons */
+.buttons-container {
+    display: flex;
+    gap: 10px; /* Adjust the space between buttons */
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    padding: 5px; /* Add padding around the container */
+    border-radius: 8px; /* Rounded corners for the container */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.sticky-top-btn {
+    position: static;
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for larger click area */
+    text-decoration: none; /* No underline */
+    font-size: 16px; /* Text size */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth background color and transform transition on hover */
+}
+
+.sticky-top-btn:hover, .sticky-top-btn:focus {
+    background-color: #0056b3; /* Darker blue on hover/focus */
+    transform: translateY(-2px); /* Slight lift effect on hover/focus */
+    outline: none; /* Remove outline on focus for aesthetics */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .buttons-container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        right: 10px; /* Adjust position for better visibility */
+        bottom: 10px; /* Adjust position for better visibility */
+        top: auto; /* Override top positioning */
+    }
+}
