@@ -19,9 +19,12 @@ after_create :send_welcome_email
   has_many :followers, through: :follow_requests_as_followee, source: :follower
   has_many :followees, through: :follow_requests_as_follower, source: :followee
 
+
+
   def following?(other_user)
     follow_requests_as_follower.where(followee: other_user).exists?
   end
+
 
   private
 

@@ -2,15 +2,15 @@
 
 <% @users.each do |user| %>
     <div class="post" style="border: 1px solid #333; padding: 10px; margin-bottom: 10px;">
-        <%= link_to user_path(user) do %>
-            <% if user.photo.attached? %>
+        <%= link_to user_path(user) do %> <!--makes the user name and picture a link to his profile-->
+            <% if user.photo.attached? %> <!--checks if the user has uploaded a profile picture-->
                 <%= image_tag user.photo.variant(resize_to_limit: [300, 300]), alt: "User's Photo", class: "user-photo" %>
             <% else %>
-                <%= image_tag user.gravatar_url, alt: "User's Gravatar" %>
+                <%= image_tag user.gravatar_url, alt: "User's Gravatar" %> <!--otherwise use the gravatar -->
             <% end %>
             <h1><%= user.email %></h1>
         <% end %>
-        <% if user_signed_in? && current_user != user %>
+        <% if current_user != user %>  <!--if logged user isn't the same as this one and not already following, permit the form to add a follow -->
             <% if !current_user.following?(user) %>
                 <%= form_with url: user_follow_requests_path(user), method: :post do |form| %>
                     <%= form.hidden_field :followee_id, value: user.id %>

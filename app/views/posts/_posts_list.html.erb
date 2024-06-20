@@ -1,17 +1,19 @@
 <% posts.each do |post| %>
-    <div style="border: 1px solid #333; padding: 10px; margin-bottom: 10px;">
-        <h2 style="color: #333;"><%= link_to post.title, post_path(post) %></h2>
-        <% if post.image.attached? %>
+  <div style="border: 1px solid #333; padding: 10px; margin-bottom: 10px;">
+    <h2 style="color: #333;"><%= link_to post.title, post_path(post) %></h2>
+    <% if post.image.attached? %>
+      <%= link_to post_path(post) do %>
         <%= image_tag post.image.variant(resize_to_limit: [500, 500]), class: "post-image" %>
-        <% end %>
-        <p style="font-size: 16px;"><%= post.body %></p> 
-        <p style="font-size: 14px; color: #666;">Author: <%= post.user.email %></p>
-        <p style="font-size: 14px; color: #666;">Likes: <%= post.likes.count %></p>
-        <p style="font-size: 14px; color: #666;">Comments: <%= post.comments.count %></p>
-        <% if user_signed_in? && !current_user.likes.exists?(post: @post) %>
-  <%= button_to 'Like', likes_path(post_id: post.id), method: :post %>
-<% else %>
-  <%= button_to 'Unlike', like_path(current_user.likes.find_by(post: post).id), method: :delete %>
-<% end %>
-    </div>
+      <% end %>
+    <% end %>
+    <p style="font-size: 16px;"><%= post.body %></p> 
+    <p style="font-size: 14px; color: #666;">
+      Author: <%= link_to user_path(post.user) do %>
+                <%= image_tag post.user.photo.variant(resize_to_limit: [50, 50]), class: "author-profile-picture" %>
+              <% end %>
+      <p> <a href="/users/<%= post.user.id %>"><%= post.user.email %></a>  </p>
+    </p>
+    <p style="font-size: 14px; color: #666;">Likes: <%= post.likes.count %></p>
+    <p style="font-size: 14px; color: #666;">Comments: <%= post.comments.count %></p>
+  </div>
 <% end %>

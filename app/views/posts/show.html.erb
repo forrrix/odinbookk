@@ -1,37 +1,38 @@
-<h1><%= @post.title %></h1>
-<% if @post.image.attached? %>
-  <%= image_tag @post.image, class: "post-image" %>
-<% end %>
-<p>
-    <%= @post.body %>
-</p>
+<h1><%= @post.title %></h1> 
 
-<p>
-    <strong>Author:</strong> <%= @post.user.email %>
-</p>
-<% if user_signed_in? && !current_user.likes.exists?(post: @post) %>
-  <%= button_to 'Like', likes_path(post_id: @post.id), method: :post %>
+<% if @post.image.attached? %> <!-- Check if the post has an attached image -->
+  <%= image_tag @post.image.variant(resize_to_limit: [500, 500]), class: "post-image" %> 
+<% end %>
+
+<p><%= @post.body %></p> 
+
+<p><strong>Author:</strong> <%= @post.user.email %></p> 
+
+<% if user_signed_in? && !current_user.likes.exists?(post: @post) %> <!-- Check if the user is signed in and if they haven't liked the post -->
+  <%= button_to 'Like', likes_path(post_id: @post.id), method: :post %> <!-- Display a button to like the post -->
 <% else %>
-  <%= button_to 'Unlike', like_path(current_user.likes.find_by(post: @post).id), method: :delete %>
-<% end %>
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
-<%= button_to 'Destroy', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<%= form_with(model: [@post, Comment.new], local: true) do |f| %>
-  <p>
-    <%= f.label :body, "New comment" %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <%= button_to 'Unlike', like_path(current_user.likes.find_by(post: @post).id), method: :delete %> <!-- Display a button to unlike the post -->
 <% end %>
 
-<% @post.comments.each do |comment| %>
+<%= link_to 'Edit', edit_post_path(@post) %> | 
+<%= link_to 'Back', posts_path %> 
+
+<%= button_to 'Destroy', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %> 
+
+<%= form_with(model: [@post, Comment.new], local: true) do |f| %> <!-- Display a form to create a new comment for the post -->
   <p>
-    <strong><%= comment.commenter.email %></strong>
-    <%= comment.body %>
-    <%= button_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= f.label :body, "New comment" %><br> 
+    <%= f.text_area :body %> 
+  </p>
+  <p>
+    <%= f.submit %> 
+  </p>
+<% end %>
+
+<% @post.comments.each do |comment| %> <!-- Iterate over each comment associated with the post -->
+  <p>
+    <strong><%= comment.commenter.email %></strong> 
+    <%= comment.body %> 
+    <%= button_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %> 
   </p>
 <% end %>
