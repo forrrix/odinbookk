@@ -31,5 +31,4 @@
 <h2>Posts from <%= @user.email %> :</h2>
 <%= render partial: "posts/posts_list", locals: { posts: @user.posts.order(created_at: :desc) } %>
 
-<%= link_to "Back to Users Index", users_path, class: "btn btn-primary" %>
-<%= link_to "Back to Post Index", posts_path, class: "btn btn-primary" %>
+<li><%= link_to "Edit user : #{current_user.email}", edit_user_registration_path %></li>
