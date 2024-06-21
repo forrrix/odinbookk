@@ -36,7 +36,7 @@
   <ul>
     <% @followers.each do |follower| %>
       <li>
-        <%= link_to follower.name, user_path(follower) %> <!-- Assuming the follower has a name attribute and you have a user_path -->
+        <%= link_to follower.email, user_path(follower) %> 
       </li>
     <% end %>
   </ul>
