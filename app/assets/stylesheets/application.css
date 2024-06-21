@@ -74,6 +74,13 @@ a:visited {
     outline: none; /* Remove outline on focus for aesthetics */
 }
 
+
+input[type="submit"] {
+    font-size: 20px; /* Larger font size */
+    padding: 15px 30px; /* Larger padding */
+    cursor: pointer;
+}
+
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .buttons-container {
