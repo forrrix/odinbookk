@@ -37,10 +37,10 @@ html, body {
     margin-bottom: 20px;
     
 }
-
-a:visited {
-    color: #ffffff; /* This makes the link color inherit the color from its parent, effectively overriding the default purple color for visited links */
+a {
+    color:  #ffffff;
 }
+
 
 /* Flex container for buttons */
 .buttons-container {
