@@ -1,14 +1,13 @@
 <% posts.each do |post| %>
   <div style="border: 1px solid #333; padding: 10px; margin-bottom: 10px;">
-    <h2 style="color: #333;"><%= link_to post.title, post_path(post) %></h2>
+    <h2><%= link_to post.title, post_path(post) %></h2>
     <% if post.image.attached? %>
       <%= link_to post_path(post) do %>
         <%= image_tag post.image.variant(resize_to_limit: [500, 500]), class: "post-image" %>
       <% end %>
     <% end %>
-    <p style="font-size: 16px;"><%= post.body %></p> 
-    <p style="font-size: 14px; color: #666;">
-      Author: <%= link_to user_path(post.user) do %>
+    <p><%= post.body %></p> 
+      <p>Author: <%= link_to user_path(post.user) do %>
                 <% if post.user.photo.attached? %>
                   <%= image_tag post.user.photo.variant(resize_to_limit: [50, 50]), class: "author-profile-picture" %>
                 <% else %>
@@ -17,7 +16,7 @@
               <% end %>
       <p> <a href="/users/<%= post.user.id %>"><%= post.user.email %></a>  </p>
     </p>
-    <p style="font-size: 14px; color: #666;">Likes: <%= post.likes.count %></p>
-    <p style="font-size: 14px; color: #666;">Comments: <%= post.comments.count %></p>
+    <p>Likes: <%= post.likes.count %></p>
+    <p>Comments: <%= post.comments.count %></p>
   </div>
 <% end %>

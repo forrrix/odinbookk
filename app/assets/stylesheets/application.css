@@ -13,6 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+ /* Global styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #121212; /* Dark background */
+    color: #ffffff; /* Light grey color for text */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    
+
+}
+.banner {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 35px;
+    font-weight: bold;
+    background-color: #000000;
+    margin-bottom: 20px;
+    
+}
+
+a:visited {
+    color: #ffffff; /* This makes the link color inherit the color from its parent, effectively overriding the default purple color for visited links */
+}
+
 /* Flex container for buttons */
 .buttons-container {
     display: flex;
@@ -23,14 +52,14 @@
     z-index: 1000;
     padding: 5px; /* Add padding around the container */
     border-radius: 8px; /* Rounded corners for the container */
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent white background */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
 .sticky-top-btn {
     position: static;
-    background-color: #007bff; /* Blue background */
-    color: white; /* White text */
+    background-color: #2d2e2d; /* Blue background */
+    color: #ffffff; /* White text */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
     padding: 10px 20px; /* Padding for larger click area */
@@ -40,7 +69,7 @@
 }
 
 .sticky-top-btn:hover, .sticky-top-btn:focus {
-    background-color: #0056b3; /* Darker blue on hover/focus */
+    background-color: #14b30e; /* Darker blue on hover/focus */
     transform: translateY(-2px); /* Slight lift effect on hover/focus */
     outline: none; /* Remove outline on focus for aesthetics */
 }
