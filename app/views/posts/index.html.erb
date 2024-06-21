@@ -10,6 +10,8 @@
 <h1>Posts from Followed Users</h1>
 <%= render partial: "posts_list", locals: { posts: @followed_users_posts } %>
 
+<h1>All Posts</h1>
+<%= render partial: "posts_list", locals: { posts: @all_posts } %>
 
 <nav>
     <ul>

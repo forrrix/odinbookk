@@ -13,6 +13,9 @@ class PostsController < ApplicationController
 
     # Fetch posts liked by the current user
     @liked_posts = Post.joins(:likes).where(likes: { user_id: current_user.id }).order('likes.created_at DESC')
+
+    # Fetch all posts
+    @all_posts = Post.all.order(created_at: :desc)
   end
 
   def show
