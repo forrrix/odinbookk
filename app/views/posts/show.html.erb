@@ -36,6 +36,8 @@
   <p>
     <strong><%= comment.commenter.email %></strong> 
     <%= comment.body %> 
-    <%= button_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %> 
+    <% if user_signed_in? && current_user == comment.user %> 
+      <%= button_to 'Delete Comment', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %> 
+    <% end %>
   </p>
 <% end %>
