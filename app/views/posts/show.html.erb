@@ -36,8 +36,12 @@
   <p>
     <strong><%= comment.commenter.email %></strong> 
     <%= comment.body %> 
+<<<<<<< HEAD
     <% if current_user.id == comment.user_id %> 
       <%= button_to 'Delete Comment', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %> 
     <% end %>
+=======
+    <%= button_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %> 
+>>>>>>> parent of 93dba67 (users can't delete comments that don't belong to them)
   </p>
 <% end %>
