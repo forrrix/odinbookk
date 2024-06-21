@@ -21,11 +21,16 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
 
-    if @comment.destroy
-      redirect_to @post, notice: "Comment was successfully deleted."
+    if @comment.commenter == current_user
+      if @comment.destroy
+        redirect_to @post, notice: "Comment was successfully deleted."
+      else
+        redirect_to @post, alert: "Comment could not be deleted."
+      end
     else
-      redirect_to @post, alert: "Comment could not be deleted."
-    end
+       # Redirect the user with an error message if they are not the commenter
+       redirect_to @post, alert: "You can only delete your own comments."
+      end
   end
 
   private
