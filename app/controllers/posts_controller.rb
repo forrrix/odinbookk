@@ -47,9 +47,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-
-    redirect_to posts_path
+    if @post.user == current_user
+      @post.destroy
+      redirect_to posts_path, notice: 'Post was successfully destroyed.'
+    else
+      redirect_to @post, alert: 'You are not authorized to delete this post.'
+    end
   end
 
 
