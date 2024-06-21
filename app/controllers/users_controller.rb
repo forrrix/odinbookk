@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @comments = Comment.where(commenter:current_user)
+    @followers = @user.followers
   end
 
   def edit

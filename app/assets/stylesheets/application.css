@@ -90,3 +90,17 @@ input[type="submit"] {
         top: auto; /* Override top positioning */
     }
 }
+
+
+.user-followers {
+    margin-top: 20px;
+  }
+  
+  .user-followers ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-followers li {
+    margin: 5px 0;
+  }

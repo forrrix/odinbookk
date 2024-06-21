@@ -31,5 +31,16 @@
 <h2>Posts from <%= @user.email %> :</h2>
 <%= render partial: "posts/posts_list", locals: { posts: @user.posts.order(created_at: :desc) } %>
 
+<div class="user-followers">
+  <h2>Followers</h2>
+  <ul>
+    <% @followers.each do |follower| %>
+      <li>
+        <%= link_to follower.name, user_path(follower) %> <!-- Assuming the follower has a name attribute and you have a user_path -->
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <li><%= link_to "Edit user : #{current_user.email}", edit_user_registration_path %></li>
 <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
