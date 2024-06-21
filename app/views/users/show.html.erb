@@ -32,3 +32,4 @@
 <%= render partial: "posts/posts_list", locals: { posts: @user.posts.order(created_at: :desc) } %>
 
 <li><%= link_to "Edit user : #{current_user.email}", edit_user_registration_path %></li>
+<li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
