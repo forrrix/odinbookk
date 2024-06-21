@@ -15,6 +15,9 @@
   <%= link_to 'Odinbook', posts_path, class: 'banner-link' %>
 </div>
   </div>
+   <% flash.each do |type, message| %>
+      <div class="flash <%= type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
