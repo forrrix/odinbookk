@@ -14,8 +14,9 @@
 <% else %>
   <%= button_to 'Unlike', like_path(current_user.likes.find_by(post: @post).id), method: :delete %> <!-- Display a button to unlike the post -->
 <% end %>
-
-<%= link_to 'Edit', edit_post_path(@post) %> | 
+<% if current_user == @post.user %> <!-- Check if the current user is the author of the post -->
+  <%= link_to 'Edit', edit_post_path(@post) %> | 
+<% end %>
 <%= link_to 'Back', posts_path %> 
 
 <%= button_to 'Destroy', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %> 
