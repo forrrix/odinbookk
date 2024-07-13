@@ -73,7 +73,7 @@ default: &default
 production:
   <<: *default
   database: <%= ENV['database'] %>
-  username: <%= ENV['dbusername'] %>
-  password: <%= ENV['dbpass'] %>
-  host: <%= ENV['dbhost'] %>
-  port: <%= ENV['dbport'] %>
+  username: <%= ENV['username'] %>
+  password: <%= ENV['password'] %>
+  host: <%= ENV['host'] %>
+  port: <%= ENV['port'] %>
