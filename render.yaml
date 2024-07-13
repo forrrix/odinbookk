@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: odinbookk
+    env: ruby
+    buildCommand: bundle exec rake assets:precompile
+    startCommand: bundle exec rails server
