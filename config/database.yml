@@ -72,8 +72,8 @@ default: &default
 #
 production:
   <<: *default
-  database: odinbook_postgresql
-  username: odinbook_postgresql_user
+  database: <%= ENV['database'] %>
+  username: <%= ENV['dbusername'] %>
   password: <%= ENV['dbpass'] %>
-  host: dpg-cq95bbtds78s7398pncg-a
-  port: 5432
+  host: <%= ENV['dbhost'] %>
+  port: <%= ENV['dbport'] %>
