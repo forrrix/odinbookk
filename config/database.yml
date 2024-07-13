@@ -72,6 +72,7 @@ default: &default
 #
 production:
   <<: *default
+  adapter: postgresql
   database: <%= ENV['database'] %>
   username: <%= ENV['username'] %>
   password: <%= ENV['password'] %>
